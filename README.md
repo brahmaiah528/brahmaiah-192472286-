@@ -202,4 +202,49 @@ for number of iterations:
         wh += lr * X[i] * dh
         bh += lr * dh
 
+Initialize board b as list of 9 empty spaces
+
+FUNCTION show():
+    print current board state
+
+FUNCTION win(player):
+    return True if player has any winning combination:
+        - rows
+        - columns
+        - diagonals
+
+FOR i in range(9):
+    show()
+    player = 'X' if i is even else 'O'
+    pos = input position (0-8)
+    b[pos] = player
+    if win(player):
+        show()
+        print player wins
+        exit loop
+ELSE:
+    show()
+    print "Draw!"
+
+Initialize random weights and biases for hidden layer (wh, bh) and output layer (wout, bout)
+Set learning rate lr
+
+for number of iterations:
+    for each input X[i] with target y[i]:
+        # Forward pass
+        h = sigmoid(X[i]*wh + bh)   # hidden layer activations
+        o = sigmoid(h*wout + bout)  # output layer activation
+
+        # Compute error
+        e = y[i] - o
+
+        # Backpropagation
+        do = e * dsig(o)             # output delta
+        dh = do*wout*dsig(h)         # hidden layer delta
+
+        # Update weights and biases
+        wout += lr * h * do
+        bout += lr * do
+        wh += lr * X[i] * dh
+        bh += lr * dh
 
