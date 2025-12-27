@@ -1,0 +1,14 @@
+% Facts
+fruit_color(apple, red).
+fruit_color(banana, yellow).
+fruit_color(grape, green).
+fruit_color(orange, orange).
+fruit_color(mango, yellow).
+fruit_color(berry, blue).
+
+% Query rules
+color_of(Fruit, Color) :-
+    fruit_color(Fruit, Color).
+
+fruit_of(Color, Fruit) :-
+    fruit_color(Fruit, Color).
