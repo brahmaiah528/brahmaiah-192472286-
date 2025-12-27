@@ -25,3 +25,23 @@ DFS-Recursive(G, node, VISITED):
         if neighbor not in VISITED:
             DFS-Recursive(G, neighbor, VISITED)
 
+A_STAR(G, start, goal):
+    open_list ← priority queue
+    add start to open_list with priority 0
+
+    g_cost[start] ← 0
+    parent[start] ← None
+
+    while open_list is not empty:
+        current ← node in open_list with lowest f_cost
+        if current = goal:
+            reconstruct path from parent pointers
+            return path
+
+        for each neighbor in G[current]:
+            new_g ← g_cost[current] + cost(current, neighbor)
+            if neighbor not in g_cost or new_g < g_cost[neighbor]:
+                g_cost[neighbor] ← new_g
+                f_cost ← new_g + heuristic[neighbor]
+                add neighbor to open_list with priority f_cost
+                parent[neighbor] ← current
