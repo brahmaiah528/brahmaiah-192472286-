@@ -256,3 +256,12 @@ fruit_colors = {
     "mango": "yellow",
     "berry": "blue"
 }
+% Get the color of a specific fruit
+color_of(Fruit, Color) :-
+    fruit_color(Fruit, Color).
+
+% Get all fruits of a specific color
+fruit_of(Color, Fruit) :-
+    fruit_color(Fruit, Color).
+
+
